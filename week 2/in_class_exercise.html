@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF8" />
+      
+         <meta name = "viewport" content= "width= device-width,inital-scale=1" />
+         
+         <title> HTML Elements 101 </title>
+
+</head>
+<body>
+        <!-- Command + / to comment in whatever language you are currently writing -->
+    <p>
+        Here is a form containing basic inout types. For more information please see
+
+        <a href ="https://www.w3schools.com/html.html_forms.asp"
+        >W3 Schools Tutorials</a>
+    </p>
+
+    <!-- THE FORM TAG ITSELF, IS NOT VISIBLE ON THE PAGE. 
+     It wrapps form elements and bakes in some browser default behavior. 
+     Like: Hitting the enter key to submit a small form. Clicking any button 
+     inside the form tag will also submit the form
+      -->
+     <!-- The name attribute is super important. This tells JS or whatever backend language 
+      what form this is and where to write the NAMED input values in your to API -->
+      <!-- action attribute is the script or funcion or API endpoint to process the form -->
+       <!-- 
+        GET - Retreive / read data 
+        POST: Writing to DB or sending onff to REST API endpoint
+        PUT- Edit/update entry
+        DELETE- deletes a record
+        usually you need to send off some unique ID to know what item to delete
+        -->
+     <form 
+     name="contactUs" 
+     target="_self" 
+     action=" userLogin.js"
+     
+     ></form>
+</body>
+
+
+
+
+</html>
