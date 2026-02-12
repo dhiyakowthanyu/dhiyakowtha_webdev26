@@ -11,7 +11,7 @@
 <body>
         <!-- Command + / to comment in whatever language you are currently writing -->
     <p>
-        Here is a form containing basic inout types. For more information please see
+        Here is a form containing basic input types. For more information please see
 
         <a href ="https://www.w3schools.com/html.html_forms.asp"
         >W3 Schools Tutorials</a>
@@ -32,12 +32,96 @@
         DELETE- deletes a record
         usually you need to send off some unique ID to know what item to delete
         -->
-     <form 
+     <form>
      name="contactUs" 
      target="_self" 
      action=" userLogin.js"
-     
-     ></form>
+     method="POST"
+     <!-- BEGIN USER INFO -->
+    <fieldset> 
+        <!-- Legend is the title of this form group / fieldset -->
+         <legend>Simple Text Input</legend>
+         <p>
+            The box and title seen are created by fieldset and legend tags. Think
+            modern day form groups or input groups.
+         </p>
+         <label for="First_name"> First Name: </label>
+         <input type="text" name="First_name" placeholder="Dummy texthint"/>
+         <!-- As a general rule  -->
+         <!-- This input was a max char length and us a required field -->
+
+          <label for="Last_name" > Last name: </label>
+         <input type="text" name="Last_name" maxlength="15" required/>
+         <!-- Input type number -->
+        <!-- Input typer number, this changes hoe the input looks,
+        limits the user to number and characters related to math -->
+          <label for="age">Your age: </label>
+          <input type="number" name="age" min="0" max="100" step="1"/>
+
+          <!-- password inputs is how we hide the text with those dots, as a default HTML behavior/style  -->
+           <label for="password">Enter a password: </label>
+           <input type="password" name="password" minlength="10" />
+           
+
+    </fieldset>
+    <input type="button" value="Submit!" name="submit" />
+     <!-- END USER INFO -->
+
+     <fieldset>
+        <legend> TextArea Tag</legend>
+        <p> TextArea Tags are great for longer text answers, and sentences and paragraphs
+        </p>
+        <label for="whyIDM" > Why did you apply to IDM </label>
+        <textarea name="whyIDM" id="whyIDM" cols="50" rows="10"></textarea>
+     </fieldset>
+
+     <fieldset><legend> Checkboxes</legend>
+        <p> Checkboxes allow the user to select more than one value (checkbox) at once.
+            <strong> Checkboxes in the name "group" have the same name but different 
+                pre-defined values </strong>
+        </p>
+        
+        <label for="pets">What pets do you have?</label>
+        <br />
+        <!-- BEWARE of copy paste! Make sure you update the text the user sees and the  -->
+        <input type="checkbox" name="pet" value="dog" />DOG <br />
+        <input type="checkbox" name="pet" value="cat" />CAT <br />
+        <input type="checkbox" name="pet" value="chicken" />CHICKEN <br />
+     </fieldset>
+
+     <fieldset> <legend> Radio Buttons</legend>
+        <p> Radio Buttons allow the user to select only one value (radio buttons) at once.
+            <strong> Radio Buttons in the name "group" have the same name but different 
+                pre-defined values </strong>
+        </p>
+        <label for="favPet">Which pet is your favorite?</label><br />
+        <input type="radio" name="favPet" value="dog">DOG <br />
+        <input type="radio" name="favPet" value="cat">CAT <br />
+        <input type="radio" name="favPet" value="chicken">CHICKEN <br />
+        <!-- if you can select more than one radio button in the same group,
+         chances are that you have a syntax error - typo. For radio or checkboxes,
+         they must all have the same exact name  -->
+    </fieldset>
+
+    <fieldset> <legend> Select options (Dropdown Menu)</legend>
+    <p>
+        Using select and option tags, you can add items to a dropdown.
+    </p>
+    <label for="state">Pick a state!</label>
+    <select name="state" id="state">
+        <!-- You name the select tag which groups the option together,
+         the value from each option is what writes to the DB -->
+         <option value="NH"> New Hampshire </option>
+         <option value="NY"> New York </option>
+         <option value="NM"> New Mexico </option>
+         <option value="NJ"> New Jersey </option>
+    </select>
+>    </fieldset>
+<p> Finally, we use a button to submit our form!</p>
+<button role="button">Sign Up!</button>
+
+
+     </form>
 </body>
 
 
