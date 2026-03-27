@@ -1,0 +1,80 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+img{
+    /* Scale to fit the width of the parent element */
+    width: 100%;
+    /*  Preserves the pixel aspect ratio */
+    height:auto;
+}
+
+/* Flex box simple row layouts */
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* some more properties so we can see our divs */
+    border: 1px solid purple;
+    background-color: rgba(225, 0, 255, 0.3)
+    min-height: 400px;
+
+}
+
+.item{
+    border: 1pm solid cornflowerblue;
+    background-color: rgba(0,0,255,0.3)
+    width: 23%:
+    height: 300px;
+}
+
+/* Atomic css design pattern */
+.center{
+    display:flex;
+    /* horizontal distribution */
+    justify-content: center;
+    /* vertical alignment */
+    align-items: center;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end{
+    justify-content: flex-end;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.justify-around{
+    justify-content: space-evenly;
+}
+
+.justify-even{
+    justify-content: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-start {
+    align-items: flex-end;
+}
+
+.justify.end {
+
+}
+
+/* Classic layout example */
+

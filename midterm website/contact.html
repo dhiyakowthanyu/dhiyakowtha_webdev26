@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhiya | Contact</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .contact-page {
+      padding: 5rem 0 4rem;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+  .nav-links .btn-contact.active {
+  background-color: var(--black);
+  color: var(--white) !important;
+}
+
+    .contact-page h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    .contact-layout {
+      display: flex;
+      gap: 6rem;
+      align-items: flex-start;
+    }
+
+    /* Left column */
+    .contact-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;         
+    }
+
+    .contact-block p.info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gray);
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-block a,
+    .contact-block p.info-value {
+      font-size: 1.05rem;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+      margin-bottom: 0.3rem;  
+    }
+
+    .contact-block a:hover {
+      color: var(--accent);
+    }
+
+    /* Arrow after email links */
+    .contact-block a::after {
+      content: "↗";
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .contact-block p.info-value::after {
+      content: none;
+    }
+
+    .contact-divider {
+      border: none;
+      border-top: 1px solid var(--light-gray);
+      margin: 0;
+    }
+
+    /* Right column: social links */
+    .contact-socials {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Each social link row */
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--light-gray);
+      font-size: 1rem;
+      color: var(--black);
+      transition: color 0.2s;
+    }
+
+    .social-link:first-child {
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+    }
+
+    .social-link span {
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE: TABLET */
+    @media (max-width: 768px) {
+      .contact-layout {
+        flex-direction: column;  /* stack vertically on mobile */
+        gap: 3rem;
+      }
+
+      .contact-socials {
+        flex: unset;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contact-page {
+        padding: 3rem 0 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV = -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="index.html" class="nav-logo">d</a>
+
+        <ul class="nav-links">
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" class="btn-contact active">Contact</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="btn-contact">Contact</a>
+    </div>
+  </nav>
+
+
+  <main>
+    <section class="contact-page">
+      <div class="container">
+
+        <p class="contact-label">Contact</p>
+        <h1>Get in touch</h1>
+
+        <div class="contact-layout">
+
+          
+          <div class="contact-info">
+
+            
+            <div class="contact-block">
+              <p class="info-label">Email</p>
+              
+              <a href="mailto:dk5447@nyu.edu">dk5447@nyu.edu</a>
+              <a href="mailto:dhiyakowtha@gmail.com">dhiyakowtha@gmail.com</a>
+            </div>
+
+            <hr class="contact-divider" />
+
+            
+            <div class="contact-block">
+              <p class="info-label">Phone</p>
+              
+              <a href="tel:9255886142">+1 (925) 588- 6142 </a>
+            </div>
+
+          </div>
+
+
+          <div class="contact-socials">
+
+            <a
+              class="social-link"
+              href="www.linkedin.com/in/dhiyakowtha"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn <span>↗</span>
+            </a>
+
+            <a
+              class="social-link"
+              href="https://www.instagram.com/dhiyakowtha/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram <span>↗</span>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!--  FOOTER -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-bottom">
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-social">
+          <a href="www.linkedin.com/in/dhiyakowtha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/dhiyakowtha/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- JAVASCRIPT — hamburger menu -->
+  <script>
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburger.addEventListener("click", function () {
+      hamburger.classList.toggle("open");
+      mobileMenu.classList.toggle("active");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,704 @@
+
+
+/* =============================================
+   1. CSS VARIABLES
+   Define once, reuse everywhere with var(--name)
+============================================= */
+:root {
+  --black:      #111111;
+  --white:      #ffffff;
+  --off-white:  #f5f5f2;
+  --gray:       #888888;
+  --light-gray: #e8e8e8;
+  --accent:     #c8a96e;           /* warm gold accent */
+  --font-heading: "DM Serif Display", serif;
+  --font-body:    "DM Sans", sans-serif;
+}
+
+
+/* =============================================
+   2. RESET & BASE STYLES
+   Removes default browser spacing/styles
+============================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding doesn't change element width */
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scroll when clicking anchor links */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--black);
+  line-height: 1.6;
+}
+
+/* Remove default bullet points from lists */
+ul {
+  list-style: none;
+}
+
+/* Remove default underline from links */
+a {
+  text-decoration: none;
+  color: inherit; /* inherits parent text color */
+}
+
+
+/* =============================================
+   3. CONTAINER
+   Wraps all page content, centered, max-width
+============================================= */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;    /* centers horizontally */
+  padding: 0 2rem;   /* left + right breathing room */
+}
+
+
+/* =============================================
+   4. NAVIGATION
+============================================= */
+nav {
+  position: sticky; /* sticks to the top when you scroll */
+  top: 0;
+  z-index: 100;     /* sits above all other content */
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-gray);
+  padding: 1rem 0;
+}
+
+/* Flexbox: logo left, links right */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* "d" logo mark */
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Desktop nav link row */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  color: var(--gray);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {  /* .active marks the current page */
+  color: var(--black);
+}
+
+/* "Contact" pill button inside nav */
+.nav-links .btn-contact {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px; /* pill shape */
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.nav-links .btn-contact:hover {
+  background-color: var(--accent);
+  color: var(--black);
+}
+
+
+/* =============================================
+   5. HAMBURGER MENU
+   Hidden on desktop. Shows on mobile via media query.
+   Three <span> lines animated into an X using CSS transforms.
+============================================= */
+.hamburger {
+  display: none;          /* hidden by default (desktop) */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+/* Each line of the hamburger icon */
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--black);
+  border-radius: 2px;
+  transition: all 0.3s ease; /* animates into X */
+}
+
+/* When .open class is added by JS, animate to X */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0; /* middle line disappears */
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* The dropdown menu itself */
+.mobile-menu {
+  display: none;          /* hidden until JS adds .active */
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--white);
+  border-top: 1px solid var(--light-gray);
+}
+
+/* JS toggles this class to show/hide the menu */
+.mobile-menu.active {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-size: 1rem;
+  color: var(--black);
+}
+
+.mobile-menu .btn-contact {
+  display: inline-block;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  width: fit-content;
+}
+
+
+/* =============================================
+   6. BUTTONS
+   Reusable button styles used across all pages
+============================================= */
+
+/* Solid black pill button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent);
+  color: var(--black);
+  transform: translateY(-2px); /* slight lift on hover */
+}
+
+/* Outlined black pill button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  border: 1.5px solid var(--black);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--black);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+/* White outlined button (used in dark footer) */
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border: 1.5px solid var(--white);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 0.9rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline-white:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+
+/* =============================================
+   7. HERO SECTION  (index.html only)
+============================================= */
+.hero {
+  padding: 3.5rem 0 2.5rem;
+}
+
+/* clamp() = scales font size between min and max based on screen width */
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  max-width: 650px;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  color: var(--gray);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+
+/* =============================================
+   8. PROJECTS GRID  (index.html + work.html)
+============================================= */
+.projects {
+  padding: 3rem 0;
+}
+
+/* Small uppercase label above sections */
+.section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+}
+
+/* CSS Grid: 2 equal columns */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* Each card is a clickable <a> that acts as a block */
+.project-card {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;         /* clips image inside rounded corners */
+  border: 1px solid var(--light-gray);
+  background-color: var(--off-white);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Image container — compact card height matching the original design */
+.project-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--light-gray);
+  position: relative;
+  max-height: 240px;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* crops image to fill space */
+  transition: transform 0.4s;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.04);     /* subtle zoom on hover */
+}
+
+/* Arrow icon overlay on project images */
+.project-img .arrow-icon {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  width: 32px;
+  height: 32px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  opacity: 0;                 /* hidden by default */
+  transition: opacity 0.25s;
+}
+
+.project-card:hover .arrow-icon {
+  opacity: 1;                 /* appears on hover */
+}
+
+/* Text below image */
+.project-info {
+  padding: 1rem 1.2rem 1.2rem;
+}
+
+.project-category {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+  margin-bottom: 0.3rem;
+}
+
+.project-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+/* Work page header (work.html only) */
+.work-header {
+  padding: 4rem 0 2rem;
+}
+
+.work-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.work-header p {
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+
+/* =============================================
+   9. SKILLS ACCORDION  (index.html + about.html)
+   Each item has a <button> toggle and a hidden content div
+============================================= */
+.skills {
+  padding: 3rem 0;
+  border-top: 1px solid var(--light-gray);
+}
+
+.skill-item {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+/* The clickable row */
+.skill-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--black);
+  text-align: left;
+}
+
+/* The ↓ arrow */
+.skill-toggle .icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+/* Rotate arrow 180° when open */
+.skill-toggle.open .icon {
+  transform: rotate(180deg);
+}
+
+/* Hidden content — shown when .active is added by JS */
+.skill-content {
+  display: none;
+  padding: 0 0 1rem;
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.skill-content.active {
+  display: block;
+}
+
+
+/* =============================================
+   10. ABOUT PREVIEW SECTION  (index.html only)
+   Small teaser with a link to the full about page
+============================================= */
+.about {
+  padding: 3rem 0;
+  border-top: 1px solid var(--light-gray);
+}
+
+/* Flexbox: label on left, text on right */
+.about-inner {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.about-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+  min-width: 80px;
+}
+
+.about-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--black);
+  max-width: 520px;
+}
+
+.about-text strong {
+  font-weight: 700;
+}
+
+
+/* =============================================
+   11. ABOUT PAGE  (about.html only)
+   Full bio layout with photo
+============================================= */
+.about-page {
+  padding: 5rem 0 4rem;
+}
+
+/* Two-column flex layout: text | photo */
+.about-layout {
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+}
+
+/* Text column grows to fill space */
+.about-text-col {
+  flex: 1;
+}
+
+/* Photo column stays fixed width */
+.about-photo-col {
+  flex: 0 0 300px; /* don't grow, don't shrink, be 300px */
+}
+
+.about-text-col h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.about-text-col p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--black);
+  margin-bottom: 1.2rem;
+  max-width: 560px;
+}
+
+/* Profile photo */
+.about-photo-col img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4; /* portrait crop */
+}
+
+
+/* =============================================
+   12. SOCIAL ICONS ROW  (index.html)
+============================================= */
+.socials {
+  padding: 2rem 0;
+  border-top: 1px solid var(--light-gray);
+}
+
+.socials-row {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.socials-row a {
+  color: var(--black);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.socials-row a:hover {
+  color: var(--accent);
+  transform: scale(1.15);
+}
+
+
+/* =============================================
+   13. FOOTER
+   Dark background section, used on all pages
+============================================= */
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 3rem 0 2rem;
+}
+
+.footer-top {
+  margin-bottom: 2rem;
+}
+
+.footer-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray);
+  margin-bottom: 0.75rem;
+}
+
+footer h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Divides nav links and social links */
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;  /* wraps on small screens */
+  gap: 1.5rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-nav a {
+  font-size: 0.85rem;
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: var(--white);
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-social a {
+  font-size: 0.85rem;
+  color: #aaa;
+  transition: color 0.2s;
+}
+
+.footer-social a:hover {
+  color: var(--white);
+}
+
+/* Adds a ↗ arrow after each social link automatically */
+.footer-social a::after {
+  content: " ↗";
+  font-size: 0.75rem;
+}
+
+
+/* =============================================
+   14. RESPONSIVE: TABLET  (768px and below)
+   Overrides desktop styles on smaller screens
+============================================= */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav links, show hamburger button */
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Projects go single column */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* About preview stacks vertically */
+  .about-inner {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* About page: text + photo stack vertically */
+  .about-layout {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* Photo goes full width on tablet */
+  .about-photo-col {
+    flex: unset;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Footer bottom stacks vertically */
+  .footer-bottom {
+    flex-direction: column;
+  }
+}
+
+
+/* =============================================
+   15. RESPONSIVE: PHONE  (480px and below)
+============================================= */
+@media (max-width: 480px) {
+
+  /* Less side padding on tiny screens */
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .about-page {
+    padding: 3rem 0 2rem;
+  }
+
+  .socials-row {
+    gap: 1.5rem;
+  }
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Makes the page scale correctly on phones and tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhiya | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+
+        <a href="index.html" class="nav-logo">d</a>
+
+        <ul class="nav-links">
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" class="btn-contact">Contact</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile dropdown  -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="contact.html class="btn-contact">Contact</a>
+    </div>
+  </nav>
+
+
+  <main>
+
+    <!-- ---- HERO SECTION ---- -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>Hi! I'm Dhiya, a junior at NYU Tandon School of Engineering</h1>
+        <p>studying Integrated Media and Design.</p>
+        <a href="work.html" class="btn-primary">See my projects →</a>
+      </div>
+    </section>
+
+
+    <section class="projects" id="work">
+      <div class="container">
+        <p class="section-label">My Work</p>
+
+        <div class="projects-grid">
+
+          <!-- PROJECT 1 -->
+          <article>
+            <a class="project-card" href="#" target="_blank" aria-label="Goodreads Redesign">
+              <div class="project-img">
+                <img src="goodreads.design.png" alt="Goodreads Redesign mockup" />
+                <span class="arrow-icon">↗</span>
+              </div>
+              <div class="project-info">
+                <p class="project-category">UX/UI Design</p>
+                <p class="project-title">Goodreads Redesign</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- PROJECT 2 -->
+          <article>
+            <a class="project-card" href="#" target="_blank" aria-label="Adapt Community Network">
+              <div class="project-img">
+                <img src="adapt.design.png" alt="Adapt Community Network project" />
+                <span class="arrow-icon">↗</span>
+              </div>
+              <div class="project-info">
+                <p class="project-category">Adapt Community Network</p>
+                <p class="project-title">Accessibility through Design</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- PROJECT 3 -->
+          <article>
+            <a class="project-card" href="#" target="_blank" aria-label="Healthcare Mobile App">
+              <div class="project-img">
+                <img src="healthcareapp.design.png" alt="Healthcare Mobile App mockup" />
+                <span class="arrow-icon">↗</span>
+              </div>
+              <div class="project-info">
+                <p class="project-category">CareSunset</p>
+                <p class="project-title">Healthcare Mobile App</p>
+              </div>
+            </a>
+          </article>
+
+    <section class="skills" id="skills">
+      <div class="container">
+        <p class="section-label">My Skills</p>
+
+        <div class="skill-item">
+          <button class="skill-toggle" aria-expanded="false">
+            Creative Coding <span class="icon">↓</span>
+          </button>
+          <div class="skill-content">
+            HTML, CSS, JavaScript, p5.js, interactive web experiences, creative technology projects.
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <button class="skill-toggle" aria-expanded="false">
+            UX/UI Design <span class="icon">↓</span>
+          </button>
+          <div class="skill-content">
+            User research, wireframing, prototyping, Figma, usability testing, design systems.
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <button class="skill-toggle" aria-expanded="false">
+            Marketing <span class="icon">↓</span>
+          </button>
+          <div class="skill-content">
+            Brand strategy, social media, content creation, campaign design, analytics.
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <button class="skill-toggle" aria-expanded="false">
+            Accessible Design <span class="icon">↓</span>
+          </button>
+          <div class="skill-content">
+            WCAG guidelines, inclusive design, screen reader-friendly interfaces, color contrast, semantic HTML.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ---- ABOUT PREVIEW ---- -->
+    <section class="about" id="about">
+      <div class="container">
+        <!-- Flexbox row: label on left, text on right — see style.css -->
+        <div class="about-inner">
+          <span class="about-label">About me</span>
+          <div>
+            <p class="about-text">
+              <strong>Creative problem-solver</strong> learning to combine marketing,
+              sales insights and design thinking to deliver innovative solutions.
+            </p>
+            <!-- Links to the full about.html page -->
+            <a href="about.html" class="btn-secondary">About Me →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- ---- SOCIAL ICONS ---- -->
+    <section class="socials">
+      <div class="container">
+        <div class="socials-row">
+
+          <a href="https://www.linkedin.com/in/dhiyakowtha" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"> LinkedIn
+
+          </a>
+
+          <a href="https://www.instagram.com/dhiyakowtha" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram
+            
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+
+  
+  <footer id="contact">
+    <div class="container">
+
+      <div class="footer-top">
+        <p class="footer-label">Contact</p>
+        <h2>Let's start creating<br />together!</h2>
+        <!-- Replace with your real email -->
+        <a href="mailto:dk5447@nyu.edu" class="btn-outline-white">Let's talk →</a>
+      </div>
+
+      <div class="footer-bottom">
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-social">
+          <a href="www.linkedin.com/in/dhiyakowtha" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/dhiyakowtha/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script>
+
+    //  HAMBURGER MENU
+
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    hamburger.addEventListener("click", function () {
+      hamburger.classList.toggle("open");    
+      mobileMenu.classList.toggle("active"); 
+    });
+
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        hamburger.classList.remove("open");
+        mobileMenu.classList.remove("active");
+      });
+    });
+
+
+    // ---- SKILLS ACCORDION ----
+
+    const skillToggles = document.querySelectorAll(".skill-toggle");
+
+    skillToggles.forEach(function (button) {
+      button.addEventListener("click", function () {
+
+        const content = button.nextElementSibling;
+
+        button.classList.toggle("open");     // rotates the ↓ arrow
+        content.classList.toggle("active");  
+
+        button.setAttribute("aria-expanded", button.classList.contains("open"));
+      });
+    });
+
+  </script>
+
+</body>
+</html>
