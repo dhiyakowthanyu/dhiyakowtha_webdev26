@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhiya | ADAPT Case Study</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS — loaded first  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* 
+       BOOTSTRAP OVERRIDES
+   */
+
+    /* override Bootstrap's primary color */
+    :root {
+      --bs-primary: #111111;
+      --bs-primary-rgb: 17, 17, 17;
+      --bs-body-font-family: "DM Sans", sans-serif;
+      --bs-body-color: #111111;
+      --bs-link-color: #111111;
+      --bs-link-hover-color: #c8a96e;
+      --bs-border-radius: 12px;
+    }
+
+    /* override Bootstrap btn defaults */
+    .btn {
+      font-family: "DM Sans", sans-serif;
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .btn-dark {
+      background-color: #111111;
+      border-color: #111111;
+    }
+
+    .btn-dark:hover {
+      background-color: #c8a96e;
+      border-color: #c8a96e;
+      color: #111111;
+    }
+
+    .btn-outline-dark {
+      border-color: #111111;
+      color: #111111;
+    }
+
+    .btn-outline-dark:hover {
+      background-color: #111111;
+      color: #ffffff;
+    }
+
+    /* Override Bootstrap card */
+    .card {
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    /* Override Bootstrap nav/accordion */
+    .accordion-button {
+      font-family: "DM Sans", sans-serif;
+      font-weight: 500;
+      color: #111111;
+      background-color: #f5f5f2;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: #111111;
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .accordion-button::after {
+      filter: none;
+    }
+
+    .accordion-button:not(.collapsed)::after {
+      filter: invert(1);
+    }
+
+    /*  CASE STUDY PAGE STYLES.  */
+
+    /* Hero section */
+    .case-hero {
+      background-color: #1a1f2e;
+      color: #ffffff;
+      padding: 5rem 0 3rem;
+    }
+
+    .case-hero .back-link {
+      font-size: 0.85rem;
+      color: #888888;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+
+    .case-hero .back-link:hover {
+      color: #c8a96e;
+    }
+
+    .case-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #c8a96e;
+      margin-bottom: 1rem;
+    }
+
+    .case-hero h1 {
+      font-family: "DM Serif Display", serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .case-hero p.lead {
+      font-size: 1.05rem;
+      color: #aaaaaa;
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    /* Meta cards row */
+    .meta-row {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .meta-item {
+      padding: 1rem 1.5rem;
+      border-left: 1px solid #e8e8e8;
+    }
+
+    .meta-item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #888888;
+      margin-bottom: 0.3rem;
+    }
+
+    .meta-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #111111;
+    }
+
+    /* Section headings */
+    .section-title {
+      font-family: "DM Serif Display", serif;
+      font-size: 2rem;
+      color: #111111;
+      margin-bottom: 1rem;
+    }
+
+    /* Before/After comparison */
+    .comparison-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e8e8e8;
+    }
+
+    .comparison-card .card-header {
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .before-header {
+      background-color: #f5f5f2;
+      color: #888888;
+    }
+
+    .after-header {
+      background-color: #111111;
+      color: #c8a96e;
+    }
+
+    .comparison-card .card-body {
+      padding: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* Process steps */
+    .process-step {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #e8e8e8;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .process-step:hover {
+      border-color: #c8a96e;
+      transform: translateX(4px);
+    }
+
+    .step-number {
+      font-family: "DM Serif Display", serif;
+      font-size: 1.8rem;
+      color: #c8a96e;
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: #888888;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Scroll reveal — elements start hidden */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Image placeholder */
+    .img-placeholder {
+      background-color: #f5f5f2;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888888;
+      font-size: 0.85rem;
+      border: 1px dashed #e8e8e8;
+    }
+
+    /* Quote block */
+    .insight-quote {
+      border-left: 3px solid #c8a96e;
+      padding: 1rem 1.5rem;
+      background-color: #f5f5f2;
+      border-radius: 0 8px 8px 0;
+      font-size: 1rem;
+      font-style: italic;
+      color: #444444;
+      margin: 1.5rem 0;
+    }
+
+    /* Takeaway cards */
+    .takeaway-card {
+      padding: 1.5rem;
+      border-radius: 12px;
+      background-color: #f5f5f2;
+      height: 100%;
+    }
+
+    .takeaway-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .takeaway-card h5 {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .takeaway-card p {
+      font-size: 0.875rem;
+      color: #666666;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .case-footer {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 2rem 0;
+    }
+
+    .case-footer a {
+      color: #aaaaaa;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .case-footer a:hover {
+      color: #c8a96e;
+    }
+
+    /* Progress bar for reading */
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background-color: #c8a96e;
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+
+    /* Nav override */
+    nav {
+      background-color: #ffffff !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading progress bar (custom JS feature) -->
+  <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- Skip link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!--  NAV — Bootstrap navbar, custom styled -->
+
+
+  <nav class="navbar navbar-expand-lg sticky-top border-bottom" style="border-color: #e8e8e8 !important;">
+    <div class="container">
+
+      <a class="navbar-brand" href="index.html" style="font-family: 'DM Serif Display', serif; font-size: 1.4rem;">d</a>
+
+      <!-- Bootstrap hamburger — custom styled via CSS -->
+
+
+      <button class="navbar-toggler border-0" type="button"
+        data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="work.html" style="color: #888888; font-size: 0.9rem;">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html" style="color: #888888; font-size: 0.9rem;">About</a></li>
+          <li class="nav-item"><a class="btn btn-dark ms-lg-2" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- MAIN CONTENT -->
+
+
+  <main id="main-content">
+
+    <!-- ---- HERO ---- -->
+
+    <section class="case-hero">
+      <div class="container">
+        <a href="work.html" class="back-link">← Back to Work</a>
+        <a href="work.html" class="back-link">← Back to Work</a>
+
+        <a href="pictures and resume/Dhiya_Kowtha_Resume.pdf" 
+          download 
+          class="back-link" 
+          aria-label="Download ADAPT policy PDF">
+
+</a>
+        <p class="case-tag">Accessibility through Design · UX/UI</p>
+        <h1>ADAPT Community<br />Network</h1>
+        <p class="lead">Rewriting a complex policy manual into plain, accessible language — making human rights information understandable for everyone ADAPT supports.</p>
+      </div>
+    </section>
+
+    <!-- ---- META ---- -->
+
+
+    <section class="meta-row">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 col-md-3">
+            <div class="meta-item">
+              <p class="meta-label">Role</p>
+              <p class="meta-value">UX Writer & Designer</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="meta-item">
+              <p class="meta-label">Type</p>
+              <p class="meta-value">Accessibility Design</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="meta-item">
+              <p class="meta-label">Tools</p>
+              <p class="meta-value">Plain Language, Figma</p>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="meta-item">
+              <p class="meta-label">Focus</p>
+              <p class="meta-value">Plain Language Rewrite</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---- THE PROBLEM ---- -->
+
+    <section class="py-5 reveal">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <p class="case-tag">The Problem</p>
+            <h2 class="section-title">A policy written for lawyers, not people</h2>
+            <p style="color: #444; line-height: 1.8; font-size: 0.975rem;">
+              ADAPT Community Network supports people with developmental disabilities. Their Human Rights Committee Policy Manual is a critical document — it outlines the rights of every person ADAPT supports, what protections they have, and how decisions about their care are made.
+            </p>
+            <p style="color: #444; line-height: 1.8; font-size: 0.975rem;">
+              The problem? The original document was written in dense legal and clinical language. The very people it was meant to protect often couldn't understand it.
+            </p>
+            <div class="insight-quote">
+              "The people this document is for should be able to read and understand it — not just lawyers and clinicians."
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="img-placeholder" style="height: 300px;">
+              <div class="text-center p-4">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📄</div>
+                <p style="margin: 0; font-size: 0.85rem;">Original ADAPT policy document</p>
+                <p style="margin: 0; font-size: 0.75rem; color: #aaa;">Dense legal language, complex sentences</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---- PROCESS ---- -->
+
+
+    <section class="py-5 reveal" style="background-color: #f5f5f2;">
+      <div class="container">
+        <p class="case-tag">Process</p>
+        <h2 class="section-title">How I approached the rewrite</h2>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-6">
+            <div class="process-step">
+              <div class="step-number">01</div>
+              <div class="step-content">
+                <h4>Read & audit the original</h4>
+                <p>Read through the full original policy manual and highlighted every sentence that was jargon-heavy, passive voice, or over 25 words long.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="process-step">
+              <div class="step-number">02</div>
+              <div class="step-content">
+                <h4>Research plain language principles</h4>
+                <p>Applied federal plain language guidelines — active voice, short sentences, simple words, and defining terms the first time they appear.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="process-step">
+              <div class="step-number">03</div>
+              <div class="step-content">
+                <h4>Rewrite section by section</h4>
+                <p>Rewrote each section maintaining all legal meaning while dramatically reducing reading level and sentence complexity.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="process-step">
+              <div class="step-number">04</div>
+              <div class="step-content">
+                <h4>Add definitions inline</h4>
+                <p>Any technical term that had to stay (like "maladaptive behavior" or "informed consent") was defined immediately in plain terms.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---- BEFORE & AFTER ---- -->
+
+
+    <section class="py-5 reveal">
+      <div class="container">
+        <p class="case-tag">Before & After</p>
+        <h2 class="section-title">Plain language in action</h2>
+        <p style="color: #666; margin-bottom: 2rem; font-size: 0.95rem;">Same meaning. Completely different reading experience.</p>
+
+        <!-- Bootstrap accordion for interactive before/after -->
+
+        <div class="accordion" id="beforeAfterAccordion">
+
+          <!-- Example 1 -->
+
+          <div class="accordion-item mb-3 border rounded-3 overflow-hidden reveal">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#example1"
+                aria-expanded="false" aria-controls="example1">
+                Example 1 — Policy Statement
+              </button>
+            </h3>
+            <div id="example1" class="accordion-collapse collapse" data-bs-parent="#beforeAfterAccordion">
+              <div class="accordion-body p-0">
+                <div class="row g-0">
+                  <div class="col-md-6">
+                    <div class="comparison-card h-100" style="border-radius: 0; border: none; border-right: 1px solid #e8e8e8;">
+                      <div class="card-header before-header">Before — Original</div>
+                      <div class="card-body">
+                        <p>"ADAPT Community Network is dedicated to respecting and honoring the human rights of all supported persons. ADAPT is committed to ensure the human rights of the persons it supports are continuously upheld and not arbitrarily diminished."</p>
+                        <p style="font-size: 0.8rem; color: #888; margin: 0;">Reading level: Grade 16+ · Sentence length: 38 words</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="comparison-card h-100" style="border-radius: 0; border: none;">
+                      <div class="card-header after-header">After — Plain Language</div>
+                      <div class="card-body">
+                        <p>"ADAPT Community Network is dedicated to respecting and honoring the human rights of all people who need support. ADAPT is committed to making sure that we are upholding the human rights of the people we support and that they are not unfairly ignored."</p>
+                        <p style="font-size: 0.8rem; color: #888; margin: 0;">Reading level: Grade 6 · Sentence length: 20 words</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example 2 -->
+
+          <div class="accordion-item mb-3 border rounded-3 overflow-hidden reveal">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#example2"
+                aria-expanded="false" aria-controls="example2">
+                Example 2 — Defining Key Terms
+              </button>
+            </h3>
+            <div id="example2" class="accordion-collapse collapse" data-bs-parent="#beforeAfterAccordion">
+              <div class="accordion-body p-0">
+                <div class="row g-0">
+                  <div class="col-md-6">
+                    <div class="comparison-card h-100" style="border-radius: 0; border: none; border-right: 1px solid #e8e8e8;">
+                      <div class="card-header before-header">Before — Original</div>
+                      <div class="card-body">
+                        <p>"The primary goal of the HRC is to ensure that the human rights of supported persons are appropriately protected. As part of this goal, the committee seeks to ensure that maladaptive behaviors are addressed through positive interventions and proactive techniques."</p>
+                        <p style="font-size: 0.8rem; color: #888; margin: 0;">No definition of "maladaptive" · Assumes clinical knowledge</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="comparison-card h-100" style="border-radius: 0; border: none;">
+                      <div class="card-header after-header">After — Plain Language</div>
+                      <div class="card-body">
+                        <p>"The main goal of the Human Rights Committee (HRC), is to make sure the human rights of all supported persons are properly protected."</p>
+                        <p><strong>What is maladaptive behavior?</strong> Maladaptive behavior is a way of acting or reacting that doesn't help someone in the long run. It might make you feel better for a little while, but hurts you or others rather than fixing the issue.</p>
+                        <p style="font-size: 0.8rem; color: #888; margin: 0;">Terms defined inline · Conversational tone</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Example 3 -->
+
+          <div class="accordion-item mb-3 border rounded-3 overflow-hidden reveal">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#example3"
+                aria-expanded="false" aria-controls="example3">
+                Example 3 — Rights & Prohibitions
+              </button>
+            </h3>
+            <div id="example3" class="accordion-collapse collapse" data-bs-parent="#beforeAfterAccordion">
+              <div class="accordion-body p-0">
+                <div class="row g-0">
+                  <div class="col-md-6">
+                    <div class="comparison-card h-100" style="border-radius: 0; border: none; border-right: 1px solid #e8e8e8;">
+                      <div class="card-header before-header">Before — Original</div>
+                      <div class="card-body">
+                        <p>"ADAPT currently prohibits the use of any, and all techniques that include the following: corporal punishment, seclusion, noxious or aversive stimuli, forced exercise, PRN orders for psychoactive medications and denial of a nutritionally adequate diet."</p>
+                        <p style="font-size: 0.8rem; color: #888; margin: 0;">Legal jargon · No plain explanation of what these mean</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="comparison-card h-100" style="border-radius: 0; border: none;">
+                      <div class="card-header after-header">After — Plain Language</div>
+                      <div class="card-body">
+                        <p>ADAPT will never allow certain things like:</p>
+                        <ul style="font-size: 0.9rem; padding-left: 1.2rem;">
+                          <li>Hitting people</li>
+                          <li>Making them stay in a room alone</li>
+                          <li>Using bad smells or pain</li>
+                          <li>Making them do too much exercise</li>
+                          <li>Giving medicine whenever a staff person wants</li>
+                          <li>Not giving them enough good food</li>
+                        </ul>
+                        <p style="font-size: 0.8rem; color: #888; margin: 0;">Concrete list · Everyday language · Scannable</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---- KEY TAKEAWAYS ---- -->
+    <section class="py-5 reveal" style="background-color: #f5f5f2;">
+      <div class="container">
+        <p class="case-tag">Key Takeaways</p>
+        <h2 class="section-title">What I learned</h2>
+
+        <!-- Bootstrap card grid -->
+        <div class="row g-3 mt-2">
+          <div class="col-md-6 col-lg-3">
+            <div class="takeaway-card">
+              <div class="icon">✍️</div>
+              <h5>Plain language is a design decision</h5>
+              <p>Word choice is just as important as visual design. Clarity is accessibility.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="takeaway-card">
+              <div class="icon">👥</div>
+              <h5>Know your reader</h5>
+              <p>The people this policy protects are the most important audience — not the lawyers who wrote it.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="takeaway-card">
+              <div class="icon">🔍</div>
+              <h5>Define terms inline</h5>
+              <p>Never assume the reader knows clinical or legal vocabulary. Define it the first time, every time.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="takeaway-card">
+              <div class="icon">♿</div>
+              <h5>Accessibility goes beyond visuals</h5>
+              <p>Screen readers help blind users. Plain language helps everyone — including people with cognitive disabilities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---- NEXT PROJECT ---- -->
+    <section class="py-5 reveal">
+      <div class="container text-center">
+        <p class="case-tag">Up Next</p>
+        <h2 class="section-title">More projects</h2>
+        <div class="d-flex gap-3 justify-content-center flex-wrap mt-3">
+          <a href="coming-soon-goodreads.html" class="btn btn-dark">Goodreads Redesign →</a>
+          <a href="coming-soon-healthcare.html" class="btn btn-outline-dark">Healthcare App →</a>
+          <a href="work.html" class="btn btn-outline-dark">All Work</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!--  FOOTER -->
+  <footer class="case-footer">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <nav aria-label="Footer navigation">
+          <a href="index.html" class="me-3">Home</a>
+          <a href="work.html" class="me-3">Work</a>
+          <a href="about.html" class="me-3">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div>
+          <a href="https://www.linkedin.com/in/dhiyakowtha" target="_blank" rel="noopener noreferrer" class="me-3">LinkedIn</a>
+          <a href="https://www.instagram.com/dhiyakowtha" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery (external JS framework) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+  <!--  CUSTOM JAVASCRIPT:  Reading progress bar, Scroll reveal using Intersection Observer, jQuery smooth scroll -->
+  <script>
+
+    //  READING PROGRESS BAR
+    // Updates the gold bar at the top as you scroll
+    $(window).on("scroll", function () {
+      const scrollTop = $(this).scrollTop();
+      const docHeight = $(document).height() - $(this).height();
+      const progress = (scrollTop / docHeight) * 100;
+      $("#reading-progress").css("width", progress + "%");
+    });
+
+
+    //  SCROLL REVEAL 
+    // uses Intersection Observer API to fade elements in as they scroll into view
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          // Stop observing once revealed
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,      // trigger when 10% of element is visible
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    // Observe all elements with .reveal class
+    document.querySelectorAll(".reveal").forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+
+    //  JQUERY : smooth scroll for back link 
+    $("a[href^='#']").on("click", function (e) {
+      e.preventDefault();
+      const target = $(this).attr("href");
+      $("html, body").animate({
+        scrollTop: $(target).offset().top - 80
+      }, 500);
+    });
+
+
+    //  JQUERY: highlight active accordion on open 
+    // adds a subtle gold left border to open accordion items
+    $("#beforeAfterAccordion").on("show.bs.collapse", function (e) {
+      $(e.target).closest(".accordion-item").css("border-color", "#c8a96e");
+    });
+
+    $("#beforeAfterAccordion").on("hide.bs.collapse", function (e) {
+      $(e.target).closest(".accordion-item").css("border-color", "#e8e8e8");
+    });
+
+  </script>
+
+</body>
+</html>
